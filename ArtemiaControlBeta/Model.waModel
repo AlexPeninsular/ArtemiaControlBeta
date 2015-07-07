@@ -1,0 +1,215 @@
+﻿{
+	"toJSON": true,
+	"extraProperties": {
+		"version": "2",
+		"classes": {
+			"Cliente": {
+				"panelColor": "#996699",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 50,
+						"Y": 5
+					}
+				}
+			},
+			"Venta": {
+				"panelColor": "#C4BD97",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 427,
+						"Y": 57
+					}
+				}
+			},
+			"Lote": {
+				"panelColor": "#D88CFF",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 771,
+						"Y": 90
+					}
+				}
+			}
+		},
+		"model": {
+			"scriptMode": "manual",
+			"workspaceLeft": 480,
+			"workspaceTop": 10,
+			"relationCurve": {
+				"run": true,
+				"mode": 1
+			}
+		}
+	},
+	"dataClasses": [
+		{
+			"name": "Cliente",
+			"className": "Cliente",
+			"collectionName": "ClienteCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				},
+				{
+					"name": "Nombre",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "Empresa",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "Ruc",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "Direccion",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "Tecnico",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "Telefono",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "PrecioDeVenta",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "Compras",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "VentaCollection",
+					"reversePath": true,
+					"path": "Cliente"
+				}
+			]
+		},
+		{
+			"name": "Lote",
+			"className": "Lote",
+			"collectionName": "LoteCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				},
+				{
+					"name": "FechaDeSiembra",
+					"kind": "storage",
+					"scope": "public",
+					"type": "date",
+					"simpleDate": false
+				},
+				{
+					"name": "FechaDeCosecha",
+					"kind": "storage",
+					"scope": "public",
+					"type": "date",
+					"simpleDate": false
+				},
+				{
+					"name": "Cantidad",
+					"kind": "storage",
+					"scope": "public",
+					"type": "long"
+				},
+				{
+					"name": "Venta",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Venta",
+					"path": "Venta"
+				}
+			]
+		},
+		{
+			"name": "Venta",
+			"className": "Venta",
+			"collectionName": "VentaCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				},
+				{
+					"name": "FechaDeVenta",
+					"kind": "storage",
+					"scope": "public",
+					"type": "date",
+					"simpleDate": false
+				},
+				{
+					"name": "Factura",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "GuiaDeRemision",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "Cliente",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Cliente",
+					"path": "Cliente",
+					"indexKind": "btree"
+				},
+				{
+					"name": "LoteS",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "LoteCollection",
+					"reversePath": true,
+					"path": "Venta"
+				}
+			]
+		}
+	]
+}
